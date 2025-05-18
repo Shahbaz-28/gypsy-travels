@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -66,56 +66,66 @@ const testimonials = [
     tourName: "Majestic Grand Canyon Adventure",
     text: "The Grand Canyon is truly breathtaking. Our hiking guide was patient and encouraging, making sure everyone in the group could enjoy the experience at their own pace.",
   },
-]
+];
 
 export default function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
-  const [isMobile, setIsMobile] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Filter featured testimonials
-  const featuredTestimonials = testimonials.filter((testimonial) => testimonial.featured)
+  const featuredTestimonials = testimonials.filter(
+    (testimonial) => testimonial.featured
+  );
 
   // Determine how many testimonials to show based on screen size
   const getVisibleCount = () => {
-    if (isMobile) return 1
-    return 3
-  }
+    if (isMobile) return 1;
+    return 3;
+  };
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
     // Set initial value
-    handleResize()
+    handleResize();
 
     // Add event listener
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
 
     // Clean up
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
-    let interval
+    let interval;
     if (autoplay) {
       interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % (testimonials.length - getVisibleCount() + 1))
-      }, 5000)
+        setCurrentIndex(
+          (prevIndex) =>
+            (prevIndex + 1) % (testimonials.length - getVisibleCount() + 1)
+        );
+      }, 5000);
     }
-    return () => clearInterval(interval)
-  }, [autoplay])
+    return () => clearInterval(interval);
+  }, [autoplay]);
 
   const handlePrev = () => {
-    setAutoplay(false)
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - getVisibleCount() : prevIndex - 1))
-  }
+    setAutoplay(false);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - getVisibleCount() : prevIndex - 1
+    );
+  };
 
   const handleNext = () => {
-    setAutoplay(false)
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % (testimonials.length - getVisibleCount() + 1))
-  }
+    setAutoplay(false);
+    setCurrentIndex(
+      (prevIndex) =>
+        (prevIndex + 1) % (testimonials.length - getVisibleCount() + 1)
+    );
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -125,7 +135,7 @@ export default function TestimonialsSection() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -134,7 +144,7 @@ export default function TestimonialsSection() {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   // Render stars based on rating
   const renderStars = (rating) => {
@@ -143,65 +153,26 @@ export default function TestimonialsSection() {
       .map((_, index) => (
         <Star
           key={index}
-          className={cn("h-4 w-4", index < rating ? "text-amber-500 fill-amber-500" : "text-gray-300")}
+          className={cn(
+            "h-4 w-4",
+            index < rating ? "text-amber-500 fill-amber-500" : "text-gray-300"
+          )}
         />
-      ))
-  }
+      ));
+  };
 
   return (
     <section className="py-12 px-4 bg-white">
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">What Our Travelers Say</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+            What Our Travelers Say
+          </h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Authentic experiences shared by travelers who have explored the world with us
+            Authentic experiences shared by travelers who have explored the
+            world with us
           </p>
-        </div>
-
-        {/* Featured Testimonials */}
-        <div className="mb-16">
-          <h3 className="text-xl font-semibold text-slate-800 mb-6 flex items-center">
-            <Quote className="h-5 w-5 mr-2 text-sky-600" />
-            Featured Reviews
-          </h3>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {featuredTestimonials.slice(0, 3).map((testimonial) => (
-              <motion.div
-                key={testimonial.id}
-                className="bg-slate-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100"
-                variants={itemVariants}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
-                    <Image
-                      src={testimonial.image || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-slate-800">{testimonial.name}</h4>
-                    <p className="text-sm text-slate-600">{testimonial.location}</p>
-                  </div>
-                </div>
-
-                <div className="flex mb-3">{renderStars(testimonial.rating)}</div>
-
-                <p className="text-slate-700 mb-3 italic">"{testimonial.text}"</p>
-
-                <p className="text-sm text-sky-600 font-medium">Tour: {testimonial.tourName}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
 
         {/* Testimonial Carousel */}
@@ -222,10 +193,17 @@ export default function TestimonialsSection() {
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / getVisibleCount())}%)` }}
+              style={{
+                transform: `translateX(-${
+                  currentIndex * (100 / getVisibleCount())
+                }%)`,
+              }}
             >
               {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="flex-none w-full md:w-1/3 px-4">
+                <div
+                  key={testimonial.id}
+                  className="flex-none w-full md:w-1/3 px-4"
+                >
                   <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-100 h-full">
                     <div className="flex items-center mb-4">
                       <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
@@ -237,16 +215,26 @@ export default function TestimonialsSection() {
                         />
                       </div>
                       <div>
-                        <h4 className="font-medium text-slate-800">{testimonial.name}</h4>
-                        <p className="text-sm text-slate-600">{testimonial.location}</p>
+                        <h4 className="font-medium text-slate-800">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-sm text-slate-600">
+                          {testimonial.location}
+                        </p>
                       </div>
                     </div>
 
-                    <div className="flex mb-3">{renderStars(testimonial.rating)}</div>
+                    <div className="flex mb-3">
+                      {renderStars(testimonial.rating)}
+                    </div>
 
-                    <p className="text-slate-700 mb-3 italic">"{testimonial.text}"</p>
+                    <p className="text-slate-700 mb-3 italic">
+                      "{testimonial.text}"
+                    </p>
 
-                    <p className="text-sm text-sky-600 font-medium">Tour: {testimonial.tourName}</p>
+                    <p className="text-sm text-sky-600 font-medium">
+                      Tour: {testimonial.tourName}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -263,16 +251,20 @@ export default function TestimonialsSection() {
 
           {/* Carousel Indicators */}
           <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: testimonials.length - getVisibleCount() + 1 }).map((_, index) => (
+            {Array.from({
+              length: testimonials.length - getVisibleCount() + 1,
+            }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => {
-                  setCurrentIndex(index)
-                  setAutoplay(false)
+                  setCurrentIndex(index);
+                  setAutoplay(false);
                 }}
                 className={cn(
                   "w-2 h-2 rounded-full transition-all duration-300",
-                  currentIndex === index ? "bg-sky-600 w-6" : "bg-slate-300 hover:bg-slate-400",
+                  currentIndex === index
+                    ? "bg-sky-600 w-6"
+                    : "bg-slate-300 hover:bg-slate-400"
                 )}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -288,5 +280,5 @@ export default function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

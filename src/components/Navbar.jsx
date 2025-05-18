@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils"
 
 const menuItems = [
   { title: "Home", href: "/" },
+  { title: "About Us", href: "/about" },
   {
     title: "Tours",
     items: [
@@ -25,8 +26,7 @@ const menuItems = [
       { title: "Domestic Tours", href: "/domestic", description: "Discover the beauty of local destinations" },
     ],
   },
-  { title: "About Us", href: "/about" },
-  { title: "Corporate", href: "/corporate" },
+  // { title: "Corporate", href: "/corporate" },
   { title: "Contact Us", href: "/contact" },
 ]
 

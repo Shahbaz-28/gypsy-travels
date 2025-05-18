@@ -3,15 +3,15 @@ import Link from "next/link";
 import { Star, MapPin, ArrowRight, Hotel, Utensils, Plane, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const tours = [
+const domesticTours = [
   {
-    id: "tour-1",
-    destination: "Tanzania",
-    location: "Tanzania",
-    image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg",
-    rating: 4.9,
-    days: 7,
-    price: 299999,
+    id: "domestic-1",
+    destination: "Goa",
+    location: "Goa, India",
+    image: "https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    rating: 4.6,
+    days: 5,
+    price: 49999,
     amenities: {
       hotel: true,
       dining: true,
@@ -19,13 +19,13 @@ const tours = [
     },
   },
   {
-    id: "tour-2",
-    destination: "Japan",
-    location: "Japan",
-    image: "https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg",
+    id: "domestic-2",
+    destination: "Kerala",
+    location: "Kerala, India",
+    image: "https://images.pexels.com/photos/962464/pexels-photo-962464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     rating: 4.8,
-    days: 9,
-    price: 229999,
+    days: 7,
+    price: 69999,
     amenities: {
       hotel: true,
       dining: true,
@@ -33,13 +33,13 @@ const tours = [
     },
   },
   {
-    id: "tour-3",
-    destination: "Indonesia",
-    location: "Indonesia",
-    image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg",
+    id: "domestic-3",
+    destination: "Rishikesh",
+    location: "Rishikesh, India",
+    image: "https://images.pexels.com/photos/460621/pexels-photo-460621.jpeg",
     rating: 4.7,
-    days: 6,
-    price: 159999,
+    days: 4,
+    price: 39999,
     amenities: {
       hotel: true,
       dining: true,
@@ -48,19 +48,19 @@ const tours = [
   },
 ];
 
-export function InternationalTour() {
+export default function DomesticTour() {
   return (
-    <section className="py-6 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0066a6] mb-4">Popular International Destinations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0066a6] mb-4">Popular Domestic Destinations</h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Explore our most sought-after travel experiences and find your perfect adventure
+            Discover amazing places within India and plan your next domestic trip
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tours.map((tour) => (
+          {domesticTours.map((tour) => (
             <TourCard key={tour.id} tour={tour} />
           ))}
         </div>
@@ -81,7 +81,7 @@ function TourCard({ tour }) {
           src={tour.image || "/placeholder.svg"}
           alt={tour.destination}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5">
           <MapPin className="h-4 w-4 text-[#0066a6]" />
@@ -123,7 +123,6 @@ function TourCard({ tour }) {
               <Plane className="h-5 w-5 text-slate-500 mb-1" />
               <span className="text-xs text-slate-600">Travel</span>
             </div>
-          
           </div>
         </div>
 
@@ -134,7 +133,7 @@ function TourCard({ tour }) {
           </div>
           <Button asChild className="bg-[#0066a6] text-white hover:bg-[#00558c]">
             <Link href={`/tours/${tour.id}`}>
-              View Details <ArrowRight className="ml-2 h-4 w-4" />
+              View Details <ArrowRight className="h-4 w-4 ml-1" />
             </Link>
           </Button>
         </div>
