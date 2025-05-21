@@ -21,6 +21,41 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+         {/* Standard Favicon */}
+      <link rel="icon" href="/images/logo/favicon.ico" />
+      {/* Favicon for different sizes */}
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/images/logo/favicon-16x16.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/images/logo/favicon-32x32.png"
+      />
+
+      {/* Android Chrome Favicon */}
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/images/logo/android-chrome-192x192.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="/images/logo/android-chrome-512x512.png"
+      />
+
+      {/* Apple Touch Icon */}
+      <link rel="apple-touch-icon" href="/images/logo/apple-touch-icon.png" />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      ></body>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

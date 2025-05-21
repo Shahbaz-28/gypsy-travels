@@ -1,11 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X, ChevronDown, Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,8 +21,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 const menuItems = [
   { title: "Home", href: "/" },
@@ -22,47 +30,54 @@ const menuItems = [
   {
     title: "Tours",
     items: [
-      { title: "International Tours", href: "/international", description: "Explore destinations around the world" },
-      { title: "Domestic Tours", href: "/domestic", description: "Discover the beauty of local destinations" },
+      {
+        title: "International Tours",
+        href: "/international",
+        description: "Explore destinations around the world",
+      },
+      {
+        title: "Domestic Tours",
+        href: "/domestic",
+        description: "Discover the beauty of local destinations",
+      },
     ],
   },
-  // { title: "Corporate", href: "/corporate" },
   { title: "Contact Us", href: "/contact" },
-]
+];
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState()
-  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState();
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
-        setMobileMenuOpen(false)
+        setMobileMenuOpen(false);
       }
-    }
+    };
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
+      setScrolled(window.scrollY > 10);
+    };
 
-    window.addEventListener("resize", handleResize)
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleLinkClick = () => {
-    setMobileMenuOpen(false)
-    setActiveSubmenu(null)
-  }
+    setMobileMenuOpen(false);
+    setActiveSubmenu(null);
+  };
 
   const toggleSubmenu = (title) => {
-    setActiveSubmenu(activeSubmenu === title ? null : title)
-  }
+    setActiveSubmenu(activeSubmenu === title ? null : title);
+  };
 
   return (
     <header
@@ -74,14 +89,22 @@ export default function Navbar() {
       <div className="container mx-auto">
         <nav className="flex items-center justify-between px-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center z-50">
-            <span className="text-3xl font-bold text-[#0069A8] tracking-tighter font-serif">
-              Gypsy
-            </span>
-            <span className="ml-1 text-xs font-medium text-slate-600 uppercase tracking-wider">
-              Travels
-            </span>
+          <Link href="/" className="flex items-center z-50 h-[64px]">
+            {" "}
+            {/* Navbar height */}
+            <div className="relative w-[120px] h-[110px]">
+              {" "}
+              {/* Fixed size container */}
+              <Image
+                src="/images/logo1.png"
+                alt="Gypsy Travels Logo"
+                fill // this makes the image stretch to fit the div
+                className="object-contain"
+                priority
+              />
+            </div>
           </Link>
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             <NavigationMenu>
@@ -90,9 +113,7 @@ export default function Navbar() {
                   <NavigationMenuItem key={index}>
                     {item.items ? (
                       <>
-                        <NavigationMenuTrigger 
-                          className="bg-white text-slate-800 hover:text-[#0069A8] font-medium px-4 py-2"
-                        >
+                        <NavigationMenuTrigger className="bg-white text-slate-800 hover:text-[#0069A8] font-medium px-4 py-2">
                           {item.title}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent className="bg-white rounded-md shadow-lg border border-gray-100">
@@ -167,7 +188,11 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
         </nav>
       </div>
@@ -184,7 +209,10 @@ export default function Navbar() {
           >
             <div className="container flex flex-col items-start justify-start h-full px-6 pb-20 space-y-1">
               {menuItems.map((item) => (
-                <div key={item.title} className="w-full py-3 border-b border-gray-100">
+                <div
+                  key={item.title}
+                  className="w-full py-3 border-b border-gray-100"
+                >
                   {item.items ? (
                     <>
                       <button
@@ -251,5 +279,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }
