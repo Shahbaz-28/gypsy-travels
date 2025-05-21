@@ -7,7 +7,7 @@ export default function AboutUs() {
       {/* Hero Section */}
       <section className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-[550px] overflow-hidden">
         <Image
-          src="https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg"
+          src="/images/imagecard.jpeg"
           alt="Beautiful travel destination"
           width={1920}
           height={1080}

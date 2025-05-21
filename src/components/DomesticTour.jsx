@@ -36,7 +36,7 @@ const domesticTours = [
     id: "domestic-3",
     destination: "Rishikesh",
     location: "Rishikesh, India",
-    image: "https://images.pexels.com/photos/460621/pexels-photo-460621.jpeg",
+    image: "/images/domescard.jpeg",
     rating: 4.7,
     days: 4,
     price: 39999,

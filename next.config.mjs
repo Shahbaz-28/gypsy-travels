@@ -18,10 +18,14 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'randomuser.me', // ✅ Add this
-      }
-    ]
-  }
+        hostname: 'plus.unsplash.com', // ✅ Add this line
+      },
+      {
+        protocol: 'https',
+        hostname: 'randomuser.me',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
