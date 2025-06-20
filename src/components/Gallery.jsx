@@ -134,11 +134,12 @@ export default function Gallery() {
       {/* Header */}
       <header className="py-8 px-4 mt-22">
         <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-600 mb-4">Gallery</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            Capturing unforgettable moments
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-600 mb-4">Gallery</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-2xl">
+          “From breathtaking landscapes to joyful moments—relive the journeys that made it all unforgettable.”
           </p>
         </div>
+        
       </header>
 
       {/* Photo Gallery */}

@@ -5,9 +5,9 @@ import { Facebook, Instagram } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-t from-green-900 to-green-800 text-gray-100">
-      <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
         {/* Logo & Tagline */}
-        <div>
+        <div className="col-span-2 md:col-span-1">
           <Link href="/" className="inline-block">
             <Image
               src="/images/logo1.png"
@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         {/* Social Links */}
-        <div>
+        <div className="col-span-2 md:col-span-1">
           <h4 className="font-semibold text-lg mb-4">Connect With Us</h4>
           <div className="flex space-x-4">
             <Link href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition">
@@ -55,7 +55,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/20 py-4 text-center text-white/60 text-sm">
-        © {new Date().getFullYear()} Gypsy Tours. All rights reserved.
+        <p>&copy; {new Date().getFullYear()} Gypsy Tours. All rights reserved.</p>
       </div>
     </footer>
   );

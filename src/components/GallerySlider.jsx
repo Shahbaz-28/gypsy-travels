@@ -173,7 +173,7 @@ export default function ImageCardSlider() {
                     <Button
                         variant="outline"
                         size="icon"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-4 bg-white/90 backdrop-blur-sm shadow-lg border-gray-200 hover:bg-white disabled:opacity-50 z-10 w-8 h-8 sm:w-10 sm:h-10"
+                        className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-4 bg-white/90 backdrop-blur-sm shadow-lg border-gray-200 hover:bg-white disabled:opacity-50 z-10 w-8 h-8 sm:w-10 sm:h-10"
                         onClick={goToPrevious}
                         disabled={currentIndex === 0}
                     >
@@ -183,7 +183,7 @@ export default function ImageCardSlider() {
                     <Button
                         variant="outline"
                         size="icon"
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-4 bg-white/90 backdrop-blur-sm shadow-lg border-gray-200 hover:bg-white disabled:opacity-50 z-10 w-8 h-8 sm:w-10 sm:h-10"
+                        className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-4 bg-white/90 backdrop-blur-sm shadow-lg border-gray-200 hover:bg-white disabled:opacity-50 z-10 w-8 h-8 sm:w-10 sm:h-10"
                         onClick={goToNext}
                         disabled={currentIndex >= maxIndex}
                     >

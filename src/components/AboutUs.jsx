@@ -22,15 +22,15 @@ export default function AboutUs() {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-5xl w-full px-4 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             About Gypsy Tours & Travels
           </h1>
-          <p className="text-base sm:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">
             Creating unforgettable journeys and memories that last a lifetime
           </p>
 
           {/* Highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               {
                 icon: <Users className="w-8 h-8 text-yellow-400 mb-3" />,
@@ -55,10 +55,10 @@ export default function AboutUs() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                className="flex flex-col items-center p-4 sm:p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
               >
                 {item.icon}
-                <h3 className="font-semibold text-white mb-2">{item.title}</h3>
+                <h3 className="font-semibold text-white text-base sm:text-lg mb-2 text-center">{item.title}</h3>
                 <p className="text-sm text-white/80 text-center">{item.desc}</p>
               </div>
             ))}
@@ -67,41 +67,40 @@ export default function AboutUs() {
       </section>
 
       {/* Our Story */}
-      <section className="py-12 px-4">
+      <section className="py-16 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-600 mb-4">  Our Story</h2>
-
-            <div className="w-24 h-1 bg-gray-600 mx-auto"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Story</h2>
+            <div className="w-24 h-1 bg-green-500 mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Image */}
             <div className="w-full">
-              <div className="overflow-hidden rounded-2xl shadow-lg">
+              <div className="overflow-hidden rounded-2xl shadow-2xl">
                 <Image
                   src="/images/gallery (4).jpeg"
                   alt="Gypsy Tours story"
                   width={600}
-                  height={400}
-                  className="w-full h-[450px] object-cover"
+                  height={450}
+                  className="w-full h-[450px] object-cover transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
 
             {/* Text */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
-                  15 Years of Adventure
+                <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
+                  6 Years of Adventure
                 </h3>
                 <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                  Since 2009, we've been crafting personalized travel experiences that go beyond ordinary tourism. Our passion for exploration and commitment to authentic connections has made us a trusted partner for thousands of travelers worldwide.
+                  Since 2019, we've been crafting personalized travel experiences that go beyond ordinary tourism. Our passion for exploration and commitment to authentic connections has made us a trusted partner for thousands of travelers worldwide.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+                <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
                   Our Promise
                 </h3>
                 <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
@@ -110,19 +109,19 @@ export default function AboutUs() {
               </div>
 
               {/* Stats */}
-              <div className="pt-4">
-                <div className="flex flex-wrap justify-center sm:justify-start gap-6 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-yellow-500">50+</div>
-                    <div className="text-gray-600">Countries</div>
+              <div className="pt-6">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-8 text-center">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-yellow-500">50+</div>
+                    <div className="text-gray-600 mt-1">Countries</div>
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-green-500">10K+</div>
-                    <div className="text-gray-600">Happy Travelers</div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-green-500">10K+</div>
+                    <div className="text-gray-600 mt-1">Happy Travelers</div>
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-blue-500">15+</div>
-                    <div className="text-gray-600">Years Experience</div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-blue-500">6+</div>
+                    <div className="text-gray-600 mt-1">Years Experience</div>
                   </div>
                 </div>
               </div>
@@ -132,7 +131,7 @@ export default function AboutUs() {
       </section>
 
       {/* Why Us Component */}
-      <div className="mb-10 px-4">
+      <div className="mb-10 sm:mb-20">
         <WhyUs />
       </div>
     </>
